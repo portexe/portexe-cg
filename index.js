@@ -16,14 +16,11 @@ export const generate = args => {
     throw new Error('Component name must be 35 characters or less');
   }
 
-  const formattedName =
-    componentName[0].toUpperCase() + componentName.slice(1).toLowerCase();
-
   const componentDir = './src/components';
   const existingDirectories = getDirectories(componentDir);
-  const newComponentDir = `${componentDir}/${formattedName}`;
+  const newComponentDir = `${componentDir}/${componentName}`;
 
-  if (existingDirectories.includes(formattedName)) {
+  if (existingDirectories.includes(componentName)) {
     throw new Error(
       'This component name already exists. Please choose a different name.',
     );
@@ -35,12 +32,12 @@ export const generate = args => {
 
   writeFileSync(
     `${newComponentDir}/index.js`,
-    `export * from './${formattedName}';\n`,
+    `export * from './${componentName}';\n`,
   );
 
   writeFileSync(
-    `${newComponentDir}/${formattedName}.js`,
-    `import styles from './styles.module.css';\n\nexport const ${formattedName} = () => {\n  return <div className={styles.main}>${formattedName}</div>;\n};\n`,
+    `${newComponentDir}/${componentName}.js`,
+    `import styles from './styles.module.css';\n\nexport const ${componentName} = () => {\n  return <div className={styles.main}>${componentName}</div>;\n};\n`,
   );
 
   const strBuffer = readFileSync('./src/components/index.js');
@@ -52,7 +49,7 @@ export const generate = args => {
 
   const updatedContents = [
     ...indexContents,
-    `export * from './${formattedName}';`,
+    `export * from './${componentName}';`,
   ].sort((a, b) => a.length - b.length);
 
   writeFileSync('./src/components/index.js', updatedContents.join('\n'));

@@ -1,6 +1,6 @@
 {
   "name": "portexe-cg",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Generate React components in the Portexe tutorial style",
   "main": "index.js",
