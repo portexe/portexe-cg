@@ -1,0 +1,16 @@
+{
+  "name": "portexe-cg",
+  "version": "1.0.1",
+  "type": "module",
+  "description": "Generate React components in the Portexe tutorial style",
+  "main": "index.js",
+  "bin": {
+    "portexe-cg": "./bin/generate.js"
+  },
+  "scripts": {
+    "publish-local": "npm install -g ./"
+  },
+  "preferGlobal": true,
+  "author": "Zackery Wilson",
+  "license": "MIT"
+}
